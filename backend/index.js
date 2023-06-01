@@ -3,7 +3,7 @@ const express = require("express");
 
 connectToMongo();
 const app = express();
-const port = 3000;
+const port = 5000;
 
 /* `app.use(express.json())` is a middleware function in Express that parses incoming requests with JSON payloads. It basically allows the server to accept JSON data in the request body and parse it into a JavaScript object that can be easily used in the server-side code. */
 app.use(express.json());
