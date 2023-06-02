@@ -10,7 +10,7 @@ const AddNote = (props) => {
     const handelClick = (e) => {
         e.preventDefault();
         addNote(note.title, note.description, note.tag);
-        setNote({ title: "", description: "", tag: "default" });
+        setNote({ title: "", description: "", tag: "" });
         props.showAlert("Added Succesfully", "success");
 
     }
@@ -23,7 +23,7 @@ const AddNote = (props) => {
 
     return (
         <div className="container my-3">
-            <h2>Add Note Here</h2>
+            <h2 style={{ textAlign: 'center' }}>Add Note Here</h2>
             <form>
                 <div className="mb-3">
                     <label htmlFor="title" className="form-label" >Title</label>

@@ -33,7 +33,8 @@ const Login = (props) => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <h2 style={{ textAlign: 'center' }}>Login to Your NoteHub Account</h2>
+            <form className="justify-content-center align-items-center" style={{ margin: '8vh 50vh' }} onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
                     <input type="email" className="form-control" value={credentials.email} onChange={onChange} id="email" name="email" aria-describedby="emailHelp" />
