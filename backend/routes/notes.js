@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
-const fetchuser = require("../middleware/fetchuser");
-const Note = require("../models/Note");
 const { body, validationResult } = require("express-validator");
 
-// ROUTE 1: Get All the Notes using: GET "/api/notes/fetchallnotes". Login required
-router.get("/fetchallnotes", fetchuser, async (req, res) => {
+const fetchUser = require("../middleware/fetchUser");
+const Note = require("../models/Note");
+
+// ROUTE 1: Get All the Notes using: GET "/api/notes/fetchAllNotes". (Login required)
+router.get("/fetchAllNotes", fetchUser, async (req, res) => {
   try {
     const notes = await Note.find({ user: req.user.id });
     res.json(notes);
@@ -15,10 +16,10 @@ router.get("/fetchallnotes", fetchuser, async (req, res) => {
   }
 });
 
-// ROUTE 2: Post a new Note using: POST "/api/notes/newnote". Login required
+// ROUTE 2: Post a new Note using: POST "/api/notes/newNote". (Login required)
 router.post(
-  "/addnote",
-  fetchuser,
+  "/newNote",
+  fetchUser,
   [
     body("title").isLength({ min: 3 }).withMessage("Enter a valid title"),
     body("description", "Description must be at least 5 characters").isLength({
@@ -34,13 +35,16 @@ router.post(
       if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
       }
+
       const note = new Note({
         title,
         description,
         tag,
         user: req.user.id,
       });
+
       const saveNote = await note.save();
+
       res.json(saveNote);
     } catch (error) {
       console.error(error);
@@ -49,12 +53,14 @@ router.post(
   }
 );
 
-// ROUTE 3: Update an existing Note using: PUT "/api/notes/updatenote". Login required
-router.put("/updatenote/:id", fetchuser, async (req, res) => {
+// ROUTE 3: Update an existing Note using: PUT "/api/notes/updateNote". (Login required)
+router.put("/updateNote/:id", fetchUser, async (req, res) => {
   const { title, description, tag } = req.body;
+
   try {
-    // Create a newnote object
+    // Create a new note object
     const newNote = {};
+
     if (title) {
       newNote.title = title;
     }
@@ -67,6 +73,7 @@ router.put("/updatenote/:id", fetchuser, async (req, res) => {
 
     // Find the note to be updated and update it
     let note = await Note.findById(req.params.id);
+
     if (!note) {
       return res.status(404).send("Note found");
     }
@@ -80,6 +87,7 @@ router.put("/updatenote/:id", fetchuser, async (req, res) => {
       { $set: newNote },
       { new: true }
     );
+
     res.json(note);
   } catch (error) {
     console.error(error);
@@ -87,11 +95,12 @@ router.put("/updatenote/:id", fetchuser, async (req, res) => {
   }
 });
 
-// ROUTE 4: Delete an existing Note using: DELETE "/api/notes/deletenote". Login required
-router.delete("/deletenote/:id", fetchuser, async (req, res) => {
+// ROUTE 4: Delete an existing Note using: DELETE "/api/notes/deleteNote". (Login required)
+router.delete("/deleteNote/:id", fetchUser, async (req, res) => {
   try {
     // Find the note to be deleted and delete it
     let note = await Note.findById(req.params.id);
+
     if (!note) {
       return res.status(404).send("Note found");
     }
@@ -102,6 +111,7 @@ router.delete("/deletenote/:id", fetchuser, async (req, res) => {
     }
 
     note = await Note.findByIdAndDelete(req.params.id);
+    
     res.json({ Success: "Note has been deleted", note: note });
   } catch (error) {
     console.error(error);

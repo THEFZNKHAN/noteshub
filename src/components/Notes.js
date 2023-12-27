@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import NoteContext from "../context/notes/NoteContext";
-import NoteItem from "./Noteitem";
+import NoteItem from "./NoteItem";
 import AddNote from "./AddNote";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 

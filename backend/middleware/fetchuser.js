@@ -1,7 +1,11 @@
 const jwt = require("jsonwebtoken");
-const JWT_SECRET = "Faizisagood$guy";
+const dotenv = require("dotenv");
 
-const fetchuser = (req, res, next) => {
+dotenv.config();
+
+const JWT_SECRET = process.env.JWT_SECRET;
+
+const fetchUser = (req, res, next) => {
   const token = req.header("auth-token");
   if (!token) {
     res.status(401).send({ error: "Please authenticate using a valid token" });
@@ -15,4 +19,4 @@ const fetchuser = (req, res, next) => {
   }
 };
 
-module.exports = fetchuser;
+module.exports = fetchUser;
