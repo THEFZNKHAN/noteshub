@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/noteshub/static/css/main.87ab02da.css",
+    "main.js": "/noteshub/static/js/main.ccb68db8.js",
+    "index.html": "/noteshub/index.html",
+    "main.87ab02da.css.map": "/noteshub/static/css/main.87ab02da.css.map",
+    "main.ccb68db8.js.map": "/noteshub/static/js/main.ccb68db8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.87ab02da.css",
+    "static/js/main.ccb68db8.js"
+  ]
+}
