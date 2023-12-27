@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import NoteContext from "../context/notes/NoteContext";
 
-const Noteitem = (props) => {
+const NoteItem = (props) => {
     const context = useContext(NoteContext);
     const { deleteNote } = context;
     const { note, updateNote } = props;
@@ -31,4 +31,4 @@ const Noteitem = (props) => {
     );
 };
 
-export default Noteitem;
+export default NoteItem;

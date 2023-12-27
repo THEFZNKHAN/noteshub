@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
 
-const mongoURI = "mongodb://127.0.0.1:27017/notehub";
+dotenv.config();
+
+const mongoURI = process.env.MONGO_URL;
 
 const connectToMongo = async () => {
   try {
