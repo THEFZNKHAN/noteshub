@@ -8,7 +8,8 @@ const UserSchema = new Schema({
   email: {
     type: String,
     required: true,
-    unique: true  },
+    unique: true,
+  },
   password: {
     type: String,
     required: true,
@@ -16,7 +17,7 @@ const UserSchema = new Schema({
   Date: {
     type: Date,
     default: Date.now,
-  }
+  },
 });
 
 const User = mongoose.model("user", UserSchema);
