@@ -1,6 +1,6 @@
-# NoteHub
+# NotesHub
 
-NoteHub is a React application that allows users to store their notes on the cloud. Users can create an account and log in to access their notes, which can be added, updated, and deleted as needed. This app provides a convenient and secure way to store and manage notes, making it easy to access them from anywhere with an internet connection.
+NotesHub is a React application that allows users to store their notes on the cloud. Users can create an account and log in to access their notes, which can be added, updated, and deleted as needed. This app provides a convenient and secure way to store and manage notes, making it easy to access them from anywhere with an internet connection.
 
 ## Features
 
@@ -20,7 +20,7 @@ NoteHub is a React application that allows users to store their notes on the clo
 
 ## Getting Started
 
-To get started with NoteHub, follow these steps:
+To get started with NotesHub, follow these steps:
 
 1. Clone the repository to your local machine.
 2. Install the dependencies using `npm install`.
@@ -29,7 +29,7 @@ To get started with NoteHub, follow these steps:
 
 ## Usage
 
-To use NoteHub, follow these steps:
+To use NotesHub, follow these steps:
 
 1. Create an account or log in to your existing account.
 2. Add new notes by clicking the "Add Note" button and filling out the form.
@@ -38,4 +38,4 @@ To use NoteHub, follow these steps:
 
 ## Contributing
 
-Contributions to NoteHub are welcome! If you find a bug or have a feature request, please open an issue on the GitHub repository. If you would like to contribute code, please fork the repository and submit a pull request.
+Contributions to NotesHub are welcome! If you find a bug or have a feature request, please open an issue on the GitHub repository. If you would like to contribute code, please fork the repository and submit a pull request.
