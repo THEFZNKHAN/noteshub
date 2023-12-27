@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
 import NoteContext from "../context/notes/NoteContext";
 import NoteItem from "./NoteItem";
 import AddNote from "./AddNote";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Notes = (props) => {
     const context = useContext(NoteContext);
@@ -20,6 +21,7 @@ const Notes = (props) => {
 
     const ref = useRef(null);
     const refClose = useRef(null);
+
     const [note, setNote] = useState({
         id: "",
         etitle: "",
@@ -75,20 +77,16 @@ const Notes = (props) => {
                         <div className="container mx-2">
                             {notes.length === 0 && "No notes to display"}
                         </div>
-                        {notes ? (
-                            notes.map((note) => {
-                                return (
-                                    <NoteItem
-                                        key={note._id}
-                                        updateNote={updateNote}
-                                        showAlert={props.showAlert}
-                                        note={note}
-                                    />
-                                );
-                            })
-                        ) : (
-                            <p>Loading notes...</p>
-                        )}
+                        {Array.isArray(notes) && notes.length > 0
+                            ? notes.map((note) => (
+                                  <NoteItem
+                                      key={note._id}
+                                      updateNote={updateNote}
+                                      showAlert={props.showAlert}
+                                      note={note}
+                                  />
+                              ))
+                            : notes && <p>Loading notes...</p>}
                     </div>
                 </div>
             </div>
